@@ -1,0 +1,60 @@
+c:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.fsproj.AssemblyReference.cache
+c:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.AssemblyInfoInputs.cache
+c:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.AssemblyInfo.fs
+c:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.fsproj.CoreCompileInputs.cache
+c:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.sourcelink.json
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/Lab01.exe
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/Lab01.deps.json
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/Lab01.runtimeconfig.json
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/Lab01.dll
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/Lab01.pdb
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/FSharp.Core.dll
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/cs/FSharp.Core.resources.dll
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/de/FSharp.Core.resources.dll
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/es/FSharp.Core.resources.dll
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/fr/FSharp.Core.resources.dll
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/it/FSharp.Core.resources.dll
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/ja/FSharp.Core.resources.dll
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/ko/FSharp.Core.resources.dll
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/pl/FSharp.Core.resources.dll
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/pt-BR/FSharp.Core.resources.dll
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/ru/FSharp.Core.resources.dll
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/tr/FSharp.Core.resources.dll
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/zh-Hans/FSharp.Core.resources.dll
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/zh-Hant/FSharp.Core.resources.dll
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.fsproj.Up2Date
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.dll
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/refint/Lab01.dll
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.pdb
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.genruntimeconfig.cache
+C:/Users/gianb/OneDrive - unige.it/Università/Secondo anno/LPO/Laboratori+/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/ref/Lab01.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/Lab01
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/Lab01.deps.json
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/Lab01.runtimeconfig.json
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/Lab01.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/Lab01.pdb
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/FSharp.Core.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/cs/FSharp.Core.resources.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/de/FSharp.Core.resources.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/es/FSharp.Core.resources.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/fr/FSharp.Core.resources.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/it/FSharp.Core.resources.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/ja/FSharp.Core.resources.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/ko/FSharp.Core.resources.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/pl/FSharp.Core.resources.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/pt-BR/FSharp.Core.resources.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/ru/FSharp.Core.resources.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/tr/FSharp.Core.resources.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/zh-Hans/FSharp.Core.resources.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/bin/Debug/net8.0/zh-Hant/FSharp.Core.resources.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.fsproj.AssemblyReference.cache
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.AssemblyInfoInputs.cache
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.AssemblyInfo.fs
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.fsproj.CoreCompileInputs.cache
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.sourcelink.json
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.fsproj.Up2Date
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/refint/Lab01.dll
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.pdb
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/Lab01.genruntimeconfig.cache
+/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/obj/Debug/net8.0/ref/Lab01.dll

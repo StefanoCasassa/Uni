@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "9G0wr3dDjU0=",
+  "success": true,
+  "projectFilePath": "/home/stefano/UNI/Secondo anno/LPO/lab01-2024-lpo24-15/Lab01/Lab01.fsproj",
+  "expectedPackageFiles": [
+    "/home/stefano/.nuget/packages/fsharp.core/8.0.401/fsharp.core.8.0.401.nupkg.sha512"
+  ],
+  "logs": []
+}

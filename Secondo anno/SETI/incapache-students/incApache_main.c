@@ -133,8 +133,8 @@ void run_webserver(const char *const port_as_str, char *www_root, const int *con
 
 		/*** create PTHREAD number i, running client_connection_thread() ***/
 /*** TO BE DONE 8.0 START ***/
-	if (pthread_create(&thread_ids[i],NULL,,)!=0) fail_errno("Couldn't create the thread\n");
-	client_connection_thread();
+	if (pthread_create(&thread_ids[i],NULL,client_connection_thread(NULL),"A")!=0) fail_errno("Couldn't create the thread\n");
+	
 /*** TO BE DONE 8.0 END ***/
 
 	}

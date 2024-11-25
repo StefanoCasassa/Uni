@@ -65,8 +65,7 @@ int keep_track_of_UID(int myUID)
     /*** Increment UserTracker[myUID] and return the computed value.
      *** Be careful in order to avoid race conditions ***/
 /*** TO BE DONE 8.0 START ***/
-	++UserTracker[myUID];
-
+	newcount=++UserTracker[myUID];
 /*** TO BE DONE 8.0 END ***/
 
     return newcount;
@@ -96,7 +95,7 @@ void send_response(int client_fd, int response_code, int cookie,
 
 	/*** Compute date of servicing current HTTP Request using a variant of gmtime() ***/
 /*** TO BE DONE 8.0 START ***/
-	localtime_s(now_t,&now_tm);
+ 	gmtime_s(now_t,now_tm);
 
 /*** TO BE DONE 8.0 END ***/
 
@@ -130,8 +129,11 @@ void send_response(int client_fd, int response_code, int cookie,
 
 			/*** compute file_size and file_modification_time ***/
 /*** TO BE DONE 8.0 START ***/
-
-
+	if (fseek(fd,0L,SEEK_END)<0) fail_errno("fseek failed\n");
+	file_size=ftell(fd);
+	
+	file_modification_time=time(NULL);
+	gmtime_s(file_modification_time,file_modification_tm);
 /*** TO BE DONE 8.0 END ***/
 
 			debug("      ... send_response(%3d,%s) : file opened, size=%lu, mime=%s\n", response_code, filename, (unsigned long)file_size, mime_type);
@@ -156,8 +158,11 @@ void send_response(int client_fd, int response_code, int cookie,
 
 			/*** compute file_size, mime_type, and file_modification_time of HTML_404 ***/
 /*** TO BE DONE 8.0 START ***/
-
-
+	if (fseek(fd,0L,SEEK_END)<0) fail_errno("fseek failed\n");
+	file_size=ftell(fd);
+	mime_type = get_mime_type(HTML_404);
+	file_modification_time=time(NULL);
+	gmtime_s(file_modification_time,file_modification_tm);
 /*** TO BE DONE 8.0 END ***/
 
 		}
@@ -176,7 +181,11 @@ void send_response(int client_fd, int response_code, int cookie,
 
 			/*** compute file_size, mime_type, and file_modification_time of HTML_501 ***/
 /*** TO BE DONE 8.0 START ***/
-
+	if (fseek(fd,0L,SEEK_END)<0) fail_errno("fseek failed\n");
+	file_size=ftell(fd);
+	mime_type = get_mime_type(HTML_501);
+	file_modification_time=time(NULL);
+	gmtime_s(file_modification_time,file_modification_tm);
 
 /*** TO BE DONE 8.0 END ***/
 
@@ -188,7 +197,7 @@ void send_response(int client_fd, int response_code, int cookie,
         if ( cookie >= 0 ) {
             /*** set permanent cookie in order to identify this client ***/
 /*** TO BE DONE 8.0 START ***/
-           
+    cookie=1;
 
 /*** TO BE DONE 8.0 END ***/
 
@@ -207,8 +216,8 @@ void send_response(int client_fd, int response_code, int cookie,
 		/*** compute time_as_string, corresponding to file_modification_time, in GMT standard format;
 		     see gmtime and strftime ***/
 /*** TO BE DONE 8.0 START ***/
-
-
+	gmtime_s(file_modification_time,file_modification_tm);
+	strftime(time_as_string, MAX_TIME_STR, "%a, %d %b %Y %T GMT", &file_modification_tm);
 /*** TO BE DONE 8.0 END ***/
 
 		strcat(http_header, time_as_string);
@@ -238,7 +247,8 @@ void send_response(int client_fd, int response_code, int cookie,
 
 		/*** send fd file on client_fd, then close fd; see syscall sendfile  ***/
 /*** TO BE DONE 8.0 START ***/
-
+	sendfile(client_fd,fd,NULL,file_size);
+	close(fd);
 
 /*** TO BE DONE 8.0 END ***/
 
@@ -296,8 +306,10 @@ void manage_http_requests(int client_fd
 		/*** parse first line defining the 3 strings method_str,
 		 *** filename, and protocol ***/
 /*** TO BE DONE 8.0 START ***/
-
-
+	char *strtokr_save=strtok(http_request_line," ");
+	method_str=strtokr_save[0];
+	filename=strtokr_save[1];
+	protocol=strtokr_save[2];
 /*** TO BE DONE 8.0 END ***/
 
 		debug("   ... method_str=%s, filename=%s (0=%c), protocol=%s (len=%d)\n",
@@ -336,7 +348,7 @@ void manage_http_requests(int client_fd
                                 /*** parse the cookie in order to get the UserID and count the number of requests coming from this client ***/
 /*** TO BE DONE 8.0 START ***/
 
-
+	keep_track_of_UID(UIDcookie)
 /*** TO BE DONE 8.0 END ***/
 
                             }

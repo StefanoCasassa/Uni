@@ -79,29 +79,10 @@ void run_webserver(const char *const port_as_str, char *www_root, const int *con
 #endif /* #ifndef PRETEND_TO_BE_ROOT */
 	}
 
-/*** TO BE DONE 8.0 START ***/
-	if (chroot(www_root)!=0) fail_errno("Couldn't chroot\n");
-	struct addrinfo hints;
-	struct addrinfo *server_addr;
-	memset(&hints, 0, sizeof hints);
-	hints.ai_family = AF_INET;
-	hints.ai_socktype = SOCK_STREAM;
-	hints.ai_flags = AI_PASSIVE;
-	hints.ai_protocol = IPPROTO_TCP;
-	if (getaddrinfo(NULL, port_as_str, &hints, &server_addr)!=0)
-			fail_errno("intApcache_main: getaddrinfo failed\n");
-
-	int listen_fd=socket(server_addr->ai_family,server_addr->ai_socktype,server_addr->ai_protocol);
-	if (listen_fd==-1) fail_errno("intApcache_main: failed to create the socket\n");
-
-	if (bind(listen_fd, server_addr->ai_addr, server_addr->ai_addrlen) == -1)
-		fail_errno("intApcache_main: Could not bind socket");
-
-	freeaddrinfo(server_addr);
-
-	if (listen(listen_fd, BACKLOG) == -1)
-		fail_errno("intApcache_main: Could not listen on socket");
-
+/*** TO BE DONE 8.0 START ***/ 
+	
+	create_listening_socket(port_as_str);
+	drop_privileges();
 /*** TO BE DONE 8.0 END ***/
 
 #ifdef INCaPACHE_8_1
@@ -133,7 +114,7 @@ void run_webserver(const char *const port_as_str, char *www_root, const int *con
 
 		/*** create PTHREAD number i, running client_connection_thread() ***/
 /*** TO BE DONE 8.0 START ***/
-	if (pthread_create(&thread_ids[i],NULL,client_connection_thread(NULL),"A")!=0) fail_errno("Couldn't create the thread\n");
+	if (pthread_create(&thread_ids[i],NULL,client_connection_thread,&connection_no[i])!=0) fail_errno("Couldn't create the thread\n");
 	
 /*** TO BE DONE 8.0 END ***/
 

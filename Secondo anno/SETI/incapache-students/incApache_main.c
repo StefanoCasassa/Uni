@@ -83,6 +83,7 @@ void run_webserver(const char *const port_as_str, char *www_root, const int *con
 	
 	create_listening_socket(port_as_str);
 	drop_privileges();
+
 /*** TO BE DONE 8.0 END ***/
 
 #ifdef INCaPACHE_8_1
@@ -114,7 +115,7 @@ void run_webserver(const char *const port_as_str, char *www_root, const int *con
 
 		/*** create PTHREAD number i, running client_connection_thread() ***/
 /*** TO BE DONE 8.0 START ***/
-	if (pthread_create(&thread_ids[i],NULL,client_connection_thread,&connection_no[i])!=0) fail_errno("Couldn't create the thread\n");
+	if (pthread_create(&thread_ids[i],NULL,client_connection_thread,&connection_no[i])!=0) fail_errno("Main: Couldn't create the thread\n");
 	
 /*** TO BE DONE 8.0 END ***/
 

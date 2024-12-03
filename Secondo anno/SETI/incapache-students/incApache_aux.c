@@ -76,7 +76,7 @@ time_t my_timegm(struct tm *tm)
 
         /*** Guess what is missing here ... ***/
 /*** TO BE DONE 8.0 START ***/
-	if(pthread_mutex_lock(&my_timegm_mutex)) fail_errno("Could not acquire lock");
+	if(pthread_mutex_lock(&my_timegm_mutex)) fail_errno("Aux: Could not lock");
 	tz = getenv("TZ");
 
 /*** TO BE DONE 8.0 END ***/
@@ -92,7 +92,7 @@ time_t my_timegm(struct tm *tm)
 
         /*** Guess what is missing here ... ***/
 /*** TO BE DONE 8.0 START ***/
-	if(pthread_mutex_unlock(&my_timegm_mutex)) fail_errno("Could not unlock thread");
+	if(pthread_mutex_unlock(&my_timegm_mutex)) fail_errno("Aux: Could not unlock");
 
 /*** TO BE DONE 8.0 END ***/
 

@@ -1,4 +1,4 @@
-#error Please read the accompanying microbash.pdf before hacking this source code (and removing this line).
+
 /*
  * Micro-bash v2.2
  *
@@ -91,6 +91,15 @@ void free_command(command_t * const c)
 {
 	assert(c==0 || c->n_args==0 || (c->n_args > 0 && c->args[c->n_args] == 0)); /* sanity-check: if c is not null, then it is either empty (in case of parsing error) or its args are properly NULL-terminated */
 	/*** TO BE DONE START ***/
+	if (c!=NULL) {
+		for (int i=0;i<c->n_args;i++){
+			free(c->args[i]);
+		}
+		free(c->args);
+		free(c->out_pathname);
+        free(c->in_pathname);
+		free(c);
+	}
 	/*** TO BE DONE END ***/
 }
 
@@ -98,6 +107,13 @@ void free_line(line_t * const l)
 {
 	assert(l==0 || l->n_commands>=0); /* sanity-check */
 	/*** TO BE DONE START ***/
+	if (l!=NULL){
+		for (int i=0;i<l->n_commands;i++){
+			free_command(l->commands[i]);
+		}
+		free(l->commands);
+		free(l);
+	}
 	/*** TO BE DONE END ***/
 }
 
@@ -161,6 +177,8 @@ command_t *parse_cmd(char * const cmdstr)
 			if (*tmp=='$') {
 				/* Make tmp point to the value of the corresponding environment variable, if any, or the empty string otherwise */
 				/*** TO BE DONE START ***/
+				char *env=getenv(tmp+1);
+				if (env==NULL) tmp="";
 				/*** TO BE DONE END ***/
 			}
 			result->args[result->n_args++] = my_strdup(tmp);
@@ -208,6 +226,17 @@ check_t check_redirections(const line_t * const l)
 	 * message and return CHECK_FAILED otherwise
 	 */
 	/*** TO BE DONE START ***/
+	for(int i=0;i<l->n_commands;++i){
+		if(i!=0 && l->commands[i]->in_pathname!=0){
+			printf("Only the first command of a line can have input-redirection\n");
+			return CHECK_FAILED;	
+		}
+
+		if(i!=l->n_commands-1 && l->commands[i]->out_pathname!=0){
+			printf("Only the last command of a line can have output-redirection\n");
+			return CHECK_FAILED;	
+		}
+	}
 	/*** TO BE DONE END ***/
 	return CHECK_OK;
 }
@@ -223,6 +252,26 @@ check_t check_cd(const line_t * const l)
 	 * message and return CHECK_FAILED otherwise
 	 */
 	/*** TO BE DONE START ***/
+	for (int i=0; i<l->n_commands;++i) {
+		if (strcmp(l->commands[i]->args[0],CD)==0){
+			if (l->n_commands>1) {
+				printf("In the line there isn't only cd command\n");
+				return CHECK_FAILED;
+			}
+			if (l->commands[i]->in_pathname!=0 || l->commands[i]->out_pathname!=0) {
+				printf("Cd command can't be redirected\n");
+				return CHECK_FAILED;
+			}
+			if (l->commands[i]->n_args==1)  {
+				printf("cd need one argument\n");
+				return CHECK_FAILED;
+			}
+			if (l->commands[i]->n_args>2)  {
+				printf("In the line there is more than one arguments for cd command\n");
+				return CHECK_FAILED;
+			}
+		}
+	}
 	/*** TO BE DONE END ***/
 	return CHECK_OK;
 }
@@ -234,6 +283,19 @@ void wait_for_children()
 	 * Similarly, if a child is killed by a signal, then you should print a message specifying its PID, signal number and signal name.
 	 */
 	/*** TO BE DONE START ***/
+	int status;
+	pid_t pid;
+	while ((pid=wait(&status))>0){
+		if (WIFEXITED(status) && WEXITSTATUS(status) != 0){
+			printf("The child terminated normally: pid is %d and the status is %d\n",pid,WEXITSTATUS(status));
+		}
+		if (WIFSIGNALED(status)) {
+			printf("The child terminated with a signal: pid is %d and the signal number is %d\n",pid,WTERMSIG(status));
+		}
+	}
+	if (errno != ECHILD) 
+        fatal_errno("Problem with the wait\n");
+	
 	/*** TO BE DONE END ***/
 }
 
@@ -243,6 +305,10 @@ void redirect(int from_fd, int to_fd)
 	 * That is, use dup/dup2/close to make to_fd equivalent to the original from_fd, and then close from_fd
 	 */
 	/*** TO BE DONE START ***/
+	if (from_fd!=NO_REDIR) {
+		if(dup2(from_fd,to_fd)==-1) fatal_errno("Redirect: dup2 Failed\n");
+		close(from_fd);
+	}
 	/*** TO BE DONE END ***/
 }
 
@@ -259,9 +325,13 @@ void run_child(const command_t * const c, int c_stdin, int c_stdout)
 		pid_t pid=fork();
 		if (pid<0) fatal_errno("Fork Failed\n");
 
-		if (pid==0){//child
-		if(dup2(c_stdin,STDIN_FILENO)==-1) fatal_errno("first dup2 Failed\n");
-		if(dup2(c_stdout,STDOUT_FILENO)==-1) fatal_errno("second dup2 Failed\n");
+		if (pid==0){
+			redirect(c_stdin,0);
+			redirect(c_stdout,1);
+			if (execvp(c->args[0],c->args)==-1) {
+				printf("exec failed: %s\n",strerror(errno));
+				exit(EXIT_FAILURE);
+			} 
 		}
 	/*** TO BE DONE END ***/
 }
@@ -273,9 +343,8 @@ void change_current_directory(char *newdir)
 	 */
 	/*** TO BE DONE START ***/
 	if (chdir(newdir)!=0) {
-		if (errno==ENOMEN) fatal_errno("Errno ENOMEN: system error\n")
-		pritnf("%s","Input not valid directory not changed\n")
-		return; 
+		if (errno==ENOMEM) fatal_errno("Errno ENOMEM: system error\n");
+		perror("Input not valid directory not changed\n");
 	}
 	/*** TO BE DONE END ***/
 }
@@ -305,7 +374,10 @@ void execute_line(const line_t * const l)
 			 * (handling error cases) */
 			/*** TO BE DONE START ***/
 				curr_stdin=open(c->in_pathname,O_RDONLY);
-				if (curr_stdin==-1) fatal_errno("Open in input Failed\n");
+				if (curr_stdin==-1) {
+					printf("Open in input Failed\n");
+					return;
+				}
 			/*** TO BE DONE END ***/
 		}
 		if (c->out_pathname) {
@@ -313,8 +385,12 @@ void execute_line(const line_t * const l)
 			/* Open c->out_pathname and assign the file-descriptor to curr_stdout
 			 * (handling error cases) */
 			/*** TO BE DONE START ***/
-			curr_stdout=open(c->in_pathname,O_WRONLY);
-				if (curr_stdout==-1) fatal_errno("Open in output Failed\n");
+			curr_stdout=open(c->out_pathname,O_WRONLY | O_CREAT,0664);
+				if (curr_stdout==-1) {
+					printf("Open in output Failed\n");
+					close_if_needed(curr_stdin);
+					return;
+				}
 			/*** TO BE DONE END ***/
 		} else if (a != (l->n_commands - 1)) { /* unless we're processing the last command, we need to connect the current command and the next one with a pipe */
 			int fds[2];
@@ -357,17 +433,7 @@ int main()
 		 * The memory area must be allocated (directly or indirectly) via malloc.
 		 */
 		/*** TO BE DONE START ***/
-	
-		size_t size = 256;
-		pwd= (char*) malloc(size);
-		char *dir = getcwd(pwd, size);
-
-		while (dir == NULL && errno == ERANGE)
-		{
-			size *= 2;
-			pwd = realloc(pwd, size);
-			dir = getcwd(pwd, size);
-		}
+		pwd = getcwd(NULL, 0);
 		/*** TO BE DONE END ***/
 		pwd = my_realloc(pwd, strlen(pwd) + prompt_suffix_len + 1);
 		strcat(pwd, prompt_suffix);
